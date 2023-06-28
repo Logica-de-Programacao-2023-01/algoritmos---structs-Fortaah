@@ -2,21 +2,29 @@ package main
 
 import "fmt"
 
-func par(eles []int) []int {
-	newele := []int{}
-	if len(eles) <= 0 {
-		return []int{}
-	} else {
-		for i := 1; i < len(eles); i++ {
-			if eles[i]%2 == 0 {
-				newele = append(newele, eles[i])
-			}
+type Viagem struct {
+	origem  string
+	destino string
+	data    string
+	preco   float64
+}
+
+func preco(a []Viagem) Viagem {
+	var max Viagem
+	for _, ns := range a {
+		if ns.preco > max.preco {
+			max = ns
 		}
 	}
-	return newele
+	return max
 }
 
 func main() {
-	eles := par([]int{1, 2, 8, 12, 15, 23, 33, 51, 45, 13})
-	fmt.Println(eles)
+	a := []Viagem{
+		{origem: "Rio", destino: "São Paulo", data: "14/05/2022", preco: 520},
+		{origem: "Maragogi", destino: "São Luis", data: "23/04/2022", preco: 600},
+		{origem: "Porto Seguro", destino: "Brasília", data: "14/06/2005", preco: 650},
+	}
+	r := preco(a)
+	fmt.Println(r)
 }

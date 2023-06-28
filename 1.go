@@ -1,17 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-func media(num []int) int {
-	var soma int
-	for i := 0; i < len(num); i++ {
-		soma += num[i]
-	}
-	res := soma / int(len(num))
-	return res
+type Circuito struct {
+	raio float64
+}
+
+func calcular(r Circuito) float64 {
+	area := r.raio * r.raio * math.Pi
+	return area
 }
 
 func main() {
-	num := media([]int{5, 13, 4, 1, 6, 8})
-	fmt.Println(num)
+	r := Circuito{raio: 5.7}
+	s := calcular(r)
+	fmt.Println(s)
 }

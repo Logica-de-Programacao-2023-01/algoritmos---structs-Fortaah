@@ -2,23 +2,31 @@ package main
 
 import "fmt"
 
-func contane(ss []string) string {
-	var st string = ""
-	if ss == nil {
-		return ""
-	} else {
-		for i, s := range ss {
-			if i != len(ss)-1 {
-				st = st + s + ", "
-			} else {
-				st = st + s
-			}
-		}
-	}
-	return st
+type Funcionarios struct {
+	nome    string
+	salario float64
+	idade   int
+}
+
+func salario(f Funcionarios) float64 {
+	var newsala float64 = f.salario + (f.salario * 0.9)
+	return newsala
+}
+
+func tempo(f Funcionarios) int {
+	var tempo int
+	tempo = f.idade - 18
+	return tempo
 }
 
 func main() {
-	ss := contane([]string{"Oi", "Tchau", "Como está", "Estou bem", "Foi um prazer"})
-	fmt.Println(ss)
+	f := Funcionarios{
+		nome:    "Sanderson",
+		salario: 1000,
+		idade:   58,
+	}
+	r := salario(f)
+	r2 := tempo(f)
+	fmt.Println("O seu novo salario é: ", r)
+	fmt.Println("Seu tempo de trabalho é: ", r2)
 }

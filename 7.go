@@ -2,17 +2,26 @@ package main
 
 import "fmt"
 
-func mapper(arr []int, f func(int) int) []int {
-	result := []int{}
-	for _, ele := range arr {
-		result = append(result, f(ele))
-	}
-	return result
+type Animal struct {
+	nome    string
+	especie string
+	idade   int
+	som     string
+}
+
+func mudarson(a Animal, novoSom string) Animal {
+	a.som = novoSom
+	return a
 }
 
 func main() {
-	result := mapper([]int{1, 2, 3}, func(i int) int {
-		return i * 2
-	})
-	fmt.Println(result)
+	novoSom := "MUUU"
+	a := Animal{
+		nome:    "Lindi",
+		especie: "Gato",
+		idade:   8,
+		som:     "Miau",
+	}
+	r := mudarson(a, novoSom)
+	fmt.Println(r)
 }
